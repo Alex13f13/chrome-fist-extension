@@ -2,12 +2,20 @@
 <html>
 	<head>
 		<title>Mi extensión de Chrome</title>
+		<link rel="stylesheet" href="popup.css">
 		<script src="popup.js"></script>
 	</head>
 	<body>
-		<h1>Bienvenido a mi extension de Chrome</h1>
-    <select name="companies" id="selctor-company">
-    </select>
+		<label for="companies">Select company:</label>
+    <select name="companies" id="selector-company"></select>
+		<div class="inline-block">
+			Activate steet view images: 
+			<label class="switchBtn">
+				<input type="checkbox" id="street-view">
+				<div class="slide round"></div>
+			</label>
+		</div>
+
   </select>
 	</body>
 </html>
