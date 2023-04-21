@@ -1,0 +1,11 @@
+{
+	"manifest_version": 3,
+	"name": "Pulse for Companies",
+	"description": "Pulse extension for companies tu custom some features",
+	"version": "1.0.0",
+	"action": {
+		"default_popup": "popup.html"
+	},
+	"permissions": ["cookies", "webRequest", "storage", "activeTab", "tabs", "scripting"],
+	"host_permissions": ["https://pulse-dev.urbandataanalytics.com/*"]
+}
