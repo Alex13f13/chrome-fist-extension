@@ -1,11 +1,16 @@
+const STREET_VIEW_COOKIE = "activate_street_view";
+const COMPANY_COOKIE = "company";
+const COMPANY_INPUT = "selector-company";
+const STREET_VIEW_INPUT = "street-view";
+
 document.addEventListener("DOMContentLoaded", function () {
   generateCompanySelector();
   generateStreetViewEvent();
-  applyCookieState("apply_street_view", setStreetViewState);
+  applyCookieState(STREET_VIEW_COOKIE, setStreetViewState);
 });
 
 function generateMultiSelector(companyList) {
-  let multiSelector = document.getElementById("selector-company");
+  let multiSelector = document.getElementById(COMPANY_INPUT);
   let options = "";
   companyList.forEach((company) => {
     options += `<option value="${company}">${company}</option>`;
@@ -54,27 +59,27 @@ function applyCookieState(key, callback) {
 }
 
 function setStreetViewState(value) {
-  document.getElementById("street-view").checked = Boolean(value);
+  document.getElementById(STREET_VIEW_INPUT).checked = Boolean(value);
 }
 function setCompanyState(value) {
-  document.getElementById("selector-company").value = value;
+  document.getElementById(COMPANY_INPUT).value = value;
 }
 
 function setCompanyEvent(multiSelector) {
   multiSelector.addEventListener("change", function () {
     var selectedCompany = multiSelector.value;
-    setCookie("company", selectedCompany);
+    setCookie(COMPANY_COOKIE, selectedCompany);
   });
 }
 
 function generateStreetViewEvent() {
-  let streetViewInput = document.getElementById("street-view");
+  let streetViewInput = document.getElementById(STREET_VIEW_INPUT);
   streetViewInput.addEventListener("change", function () {
     if (streetViewInput.checked) {
-      setCookie("apply_street_view", "true");
+      setCookie(STREET_VIEW_COOKIE, "true");
       return;
     }
-    deleteCookie("apply_street_view");
+    deleteCookie(STREET_VIEW_COOKIE);
   });
 }
 
@@ -88,5 +93,5 @@ function generateCompanySelector() {
   fetch("https://run.mocky.io/v3/aadcb90b-4063-49e3-b01c-8e36762fec69")
     .then((response) => response.json())
     .then((data) => generateMultiSelector(data.companies))
-    .then(() => applyCookieState("company", setCompanyState));
+    .then(() => applyCookieState(COMPANY_COOKIE, setCompanyState));
 }

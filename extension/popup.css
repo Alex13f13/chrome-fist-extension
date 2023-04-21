@@ -6,13 +6,21 @@ body {
   padding: 24px;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(239, 242, 247);
+  border-radius: 8px;
+  overflow: hidden;
 }
 .inline-block {
   display: flex;
   gap: 8px;
   align-items: center;
 }
-
+.input-select {
+  height: 30px;
+  border: 1px solid rgb(23, 120, 251);
+  border-radius: 4px;
+  padding: 4px;
+}
 .switchBtn {
   position: relative;
   display: inline-block;
